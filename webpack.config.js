@@ -22,7 +22,16 @@ module.exports = {
                     { loader: 'style-loader'},
                     { loader: 'css-loader'}
                 ],
-            }
+            },{
+  test: /\.(html)$/,
+  use: {
+    loader: 'html-loader',
+    options: {
+      attrs: [':data-src']
+    }
+  }
+}
+            
         ]
     },
     devServer: {
@@ -31,7 +40,6 @@ module.exports = {
         hot: true
     },
     plugins: [
-        new CopyWebpackPlugin(['style.css','src/assets/exampleimage.jpg','API_Request.js','src/blockAccess.js','src/app.js','src/assets/background.jpg']),
         new webpack.HotModuleReplacementPlugin()
     ]
 };
